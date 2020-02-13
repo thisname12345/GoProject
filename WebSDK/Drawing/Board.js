@@ -2934,7 +2934,9 @@ CDrawingBoard.prototype.private_AddOrRemoveStones = function(X, Y, event)
 	var Value = BOARD_BLACK;
 	if (BOARD_EMPTY !== this.m_oLogicBoard.Get(X, Y))
 		Value = BOARD_EMPTY;
-	else if (event.ShiftKey)
+// randomly get a white stone as on some mobile phones it is not possible to shift-click
+	else if (event.ShiftKey || Math.random() > 0.5)
+//	else if (event.ShiftKey)
 		Value = BOARD_WHITE;
 
 	var oHandler = this.m_oGameTree.Get_Handler();
